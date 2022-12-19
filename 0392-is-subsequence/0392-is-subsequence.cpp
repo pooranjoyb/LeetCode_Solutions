@@ -1,13 +1,9 @@
 class Solution {
-public:
-    bool isSubsequence(string s, string t) {
-        int lenS = s.size(), lenT = t.size();
-        int val = 0;
-        for(int i = 0, j = 0; i < lenS, j < lenT;){
-            if(s[i] == t[j])    {i++; j++; val++;}
-            else    j++;
+    public:
+        bool isSubsequence(string s, string t) 
+        {        
+            for(int x=t.size()-1; x>=0 && !s.empty(); x--)
+                if (t[x]==s[s.size()-1]) s.pop_back();   //treating subsequence string as a stack
+            return s.empty();
         }
-        if(val == lenS)    return true;
-        else            return false;
-    }
 };
